@@ -1,40 +1,38 @@
-import _ from 'lodash';
+import _ from 'lodash'; // eslint-disable-line
 import './style.css';
 
 const toToDoArray = [
-    {
-        index: 0,
-        description: 'cook',
-        completed: true,
-    },
-    {
-        index: 1,
-        description: 'study',
-        completed: true,
-    },
-    {
-        index: 2,
-        description: 'wash clothes',
-        completed: true,
-    },
-    {
-        index: 3,
-        description: 'sleep',
-        completed: true,
-    },
-    {
-        index: 4,
-        description: 'exercise',
-        completed: true,
-    },
-]
+  {
+    index: 0,
+    description: 'cook',
+    completed: true,
+  },
+  {
+    index: 1,
+    description: 'study',
+    completed: true,
+  },
+  {
+    index: 2,
+    description: 'wash clothes',
+    completed: true,
+  },
+  {
+    index: 3,
+    description: 'sleep',
+    completed: true,
+  },
+  {
+    index: 4,
+    description: 'exercise',
+    completed: true,
+  },
+];
 
 const taskInput = document.querySelector('.task-input');
 
 const contentMarkup = () => {
-
-    const liMarkup = toToDoArray.map((task) =>
-        `
+  const liMarkup = toToDoArray.map((task) => `
     <li class="task-item">
         <div class="btn-check">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-app"
@@ -52,9 +50,9 @@ const contentMarkup = () => {
         </svg>
         </div>
     </li>
-    `).join('')
+    `).join('');
 
-    taskInput.insertAdjacentHTML('afterend', liMarkup);
-}
+  taskInput.insertAdjacentHTML('afterend', liMarkup);
+};
 
-window.document.addEventListener('DOMContentLoaded', contentMarkup)
+window.document.addEventListener('DOMContentLoaded', contentMarkup);
