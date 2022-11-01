@@ -1,7 +1,137 @@
-body {
-    background-color: bisque;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:ital,wght@0,400;0,500;1,500&family=Raleway:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap');
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.hello {
-    color: red;
+html {
+  font-size: 62.5%;
+}
+
+.title {
+  color: #545862;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2rem;
+  padding: 1rem;
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.list-container {
+  margin-top: 5rem;
+  list-style: none;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+}
+
+.title-holder {
+  width: 45rem;
+  height: 5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-input {
+  width: 45rem;
+  min-height: 5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.task-input-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: auto;
+}
+
+.task-dots {
+  padding: 1rem;
+  cursor: all-scroll;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  border-style: none;
+  overflow: auto;
+  padding: 1.5rem;
+  line-height: 2rem;
+  word-wrap: break-word;
+  font-size: 1.6rem;
+}
+
+textarea {
+  margin-top: 1rem;
+  width: 100%;
+  min-height: 100%;
+  border-style: none;
+  border-color: transparent;
+  overflow: auto;
+  box-sizing: content-box;
+  resize: none;
+  padding: 0.5rem;
+}
+
+.add-item,
+.refresh-btn {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+textarea:focus {
+  outline: none !important;
+}
+
+.btn-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  cursor: pointer;
+}
+
+.btn-clear {
+  opacity: 0.5;
+  background-color: transparent;
+  display: block;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btn-clear:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.clear-completed {
+  background: rgba(0, 0, 0, 0.08);
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
