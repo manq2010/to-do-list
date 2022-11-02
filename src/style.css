@@ -71,11 +71,6 @@ input {
   overflow: auto;
 }
 
-/* textarea:focus {
-  background: pink;
-} */
-
-
 .task-dots {
   padding: 1rem;
   cursor: all-scroll;
@@ -117,7 +112,6 @@ input:focus {
 
 textarea:focus {
   outline: none !important;
-  /* background: pink; */
 }
 
 .btn-check {
