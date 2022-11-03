@@ -52,8 +52,15 @@ window.document.addEventListener('DOMContentLoaded', () => {
 
     inputContent.addEventListener('change', (e) => {
       const checkboxFlag = e.target.checked;
-      if (checkboxFlag === true) Iteractive.statusUpdate(index, checkboxFlag);
-      else Iteractive.statusUpdate(index, checkboxFlag);
+      if (checkboxFlag === true) {
+        Iteractive.statusUpdate(index, checkboxFlag);
+        textAreaContent.style.setProperty('text-decoration', 'line-through');
+        textAreaContent.style.setProperty('opacity', '0.5');
+      } else {
+        Iteractive.statusUpdate(index, checkboxFlag);
+        textAreaContent.style.setProperty('text-decoration', 'none');
+        textAreaContent.style.setProperty('opacity', '1');
+      }
     });
 
     const btnClear = document.querySelector('.btn-clear');
