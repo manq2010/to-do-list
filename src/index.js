@@ -1,58 +1,50 @@
 import _ from 'lodash'; // eslint-disable-line
 import './style.css';
+import Tasks from '../modules/tasks.js';
+import Storage from '../modules/storage.js';
+import UserInterface from '../modules/userinterface.js';
 
-const toToDoArray = [
-  {
-    index: 0,
-    description: 'cook',
-    completed: true,
-  },
-  {
-    index: 1,
-    description: 'study',
-    completed: true,
-  },
-  {
-    index: 2,
-    description: 'wash clothes',
-    completed: true,
-  },
-  {
-    index: 3,
-    description: 'sleep',
-    completed: true,
-  },
-  {
-    index: 4,
-    description: 'exercise',
-    completed: true,
-  },
-];
+window.document.addEventListener('DOMContentLoaded', () => {
+  let indexV = 1;
 
-const taskInput = document.querySelector('.task-input');
+  const tasks = Storage.getTasks();
+  tasks.forEach((task) => {
+    UserInterface.addTask(task);
+    indexV += 1;
+  });
 
-const contentMarkup = () => {
-  const liMarkup = toToDoArray.map((task) => `
-    <li class="task-item">
-        <div class="btn-check">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-app"
-                viewBox="0 0 16 16">
-                <path
-                    d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z" />
-            </svg>
-        </div>
-        <textarea name="" id="edit-text" spellcheck="false">${task.description}</textarea>
-        <div class="task-dots">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-            <path
-                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-        </svg>
-        </div>
-    </li>
-    `).join('');
+  const addItem = document.querySelector('.add-item');
+  const inputItem = document.querySelector('#input-item');
 
-  taskInput.insertAdjacentHTML('afterend', liMarkup);
-};
+  addItem.addEventListener('click', () => {
+    if (inputItem.value !== '') {
+      const tasksObject = new Tasks(indexV, inputItem.value, false);
+      UserInterface.addTask(tasksObject);
+      indexV += 1;
+      Storage.updateIndex();
+      Storage.addTaskLocalStorage(tasksObject);
+      UserInterface.clearTaskInputs();
+    } else {
+      //
+    }
+  });
 
-window.document.addEventListener('DOMContentLoaded', contentMarkup);
+  const taskDots = Array.from(document.getElementsByClassName('delete-task'));
+
+  taskDots.forEach((element, index) => {
+    element.addEventListener('click', (e) => {
+      const node = e.target.parentNode.parentNode;
+      UserInterface.deleteTask(node);
+      indexV -= 1;
+      Storage.deleteTaskLocalStorage(index);
+      Storage.updateIndex();
+    });
+
+    const parent = element.parentNode.parentNode;
+    const textAreaContent = parent.querySelector('textarea');
+
+    textAreaContent.addEventListener('blur', () => {
+      UserInterface.editTask(index, textAreaContent.value);
+    });
+  });
+});
