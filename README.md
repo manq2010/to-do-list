@@ -1,9 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# To-Do list: Javascript
 
-> Description the project.
-
+> In this project, add and remove functionalities have been added to the application to make it interactive in the creation of to-do task lists.
 
 ## Built With
 
@@ -11,18 +10,15 @@
 - CSS
 - JavaScript
 
-## Live Demo (if available)
+<!-- ## Live Demo (if available) -->
 
-[Live Demo Link](https://livedemo.com)
+<!-- [Live Demo Link](https://livedemo.com) -->
 
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
 
-
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running folluw these simple example steps.
 
 ### Prerequisites
 * web browser (e.g. Google Chrome)
@@ -32,7 +28,7 @@ To get a local copy up and running follow these simple example steps.
 ### Setup
 
 ```
-git clone git@github.com:<username>/<repo>.git
+git clone git@github.com:manq2010/o-do-list.git
 ```
 
 ### Install
@@ -46,20 +42,14 @@ git clone git@github.com:<username>/<repo>.git
 * This project is deployed with Github pages.
 
 
-
 ## Authors
 
-👤 **Author1**
+👤 **Mancoba Sihlongonyane**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@githubhandle](https://github.com/manq2010)
+- Twitter: [@twitterhandle](https://twitter.com/mancoba_c)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/mancobasihlongonyane)
 
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
 ## 🤝 Contributing
 
