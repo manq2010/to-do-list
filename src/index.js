@@ -22,11 +22,9 @@ window.document.addEventListener('DOMContentLoaded', () => {
       const tasksObject = new Tasks(indexV, inputItem.value, false);
       UserInterface.addTask(tasksObject);
       indexV += 1;
-      Storage.updateIndex();
       Storage.addTaskLocalStorage(tasksObject);
       UserInterface.clearTaskInputs();
-    } else {
-      //
+      Storage.updateIndex();
     }
   });
 
