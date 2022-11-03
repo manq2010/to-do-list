@@ -1,8 +1,9 @@
 import _ from 'lodash'; // eslint-disable-line
 import './style.css';
-import Tasks from '../modules/tasks.js';
-import Storage from '../modules/storage.js';
-import UserInterface from '../modules/userinterface.js';
+import Tasks from './modules/tasks.js';
+import Storage from './modules/storage.js';
+import UserInterface from './modules/userinterface.js';
+import Iteractive from './modules/interactive.js';
 
 window.document.addEventListener('DOMContentLoaded', () => {
   let indexV = 1;
@@ -21,11 +22,9 @@ window.document.addEventListener('DOMContentLoaded', () => {
       const tasksObject = new Tasks(indexV, inputItem.value, false);
       UserInterface.addTask(tasksObject);
       indexV += 1;
-      Storage.updateIndex();
       Storage.addTaskLocalStorage(tasksObject);
       UserInterface.clearTaskInputs();
-    } else {
-      //
+      Storage.updateIndex();
     }
   });
 
@@ -46,5 +45,23 @@ window.document.addEventListener('DOMContentLoaded', () => {
     textAreaContent.addEventListener('blur', () => {
       UserInterface.editTask(index, textAreaContent.value);
     });
+
+    const inputContent = parent.querySelector('input');
+
+    inputContent.addEventListener('change', (e) => {
+      const checkboxFlag = e.target.checked;
+      if (checkboxFlag === true) {
+        Iteractive.statusUpdate(index, checkboxFlag);
+        textAreaContent.style.setProperty('text-decoration', 'line-through');
+        textAreaContent.style.setProperty('opacity', '0.5');
+      } else {
+        Iteractive.statusUpdate(index, checkboxFlag);
+        textAreaContent.style.setProperty('text-decoration', 'none');
+        textAreaContent.style.setProperty('opacity', '1');
+      }
+    });
+
+    const btnClear = document.querySelector('.btn-clear');
+    btnClear.addEventListener('click', Iteractive.clearAll);
   });
 });
