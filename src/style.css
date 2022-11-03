@@ -71,9 +71,17 @@ input {
   overflow: auto;
 }
 
+#form-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: auto;
+  width: 100%;
+}
+
 .task-dots {
   padding: 1rem;
-  cursor: all-scroll;
+  cursor: pointer;
 }
 
 input {

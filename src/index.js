@@ -1,8 +1,9 @@
 import _ from 'lodash'; // eslint-disable-line
 import './style.css';
-import Tasks from '../modules/tasks.js';
-import Storage from '../modules/storage.js';
-import UserInterface from '../modules/userinterface.js';
+import Tasks from './modules/tasks.js';
+import Storage from './modules/storage.js';
+import UserInterface from './modules/userinterface.js';
+import Iteractive from './modules/interactive.js';
 
 window.document.addEventListener('DOMContentLoaded', () => {
   let indexV = 1;
@@ -46,5 +47,16 @@ window.document.addEventListener('DOMContentLoaded', () => {
     textAreaContent.addEventListener('blur', () => {
       UserInterface.editTask(index, textAreaContent.value);
     });
+
+    const inputContent = parent.querySelector('input');
+
+    inputContent.addEventListener('change', (e) => {
+      const checkboxFlag = e.target.checked;
+      if (checkboxFlag === true) Iteractive.statusUpdate(index, checkboxFlag);
+      else Iteractive.statusUpdate(index, checkboxFlag);
+    });
+
+    const btnClear = document.querySelector('.btn-clear');
+    btnClear.addEventListener('click', Iteractive.clearAll);
   });
 });
