@@ -151,3 +151,15 @@ textarea:focus {
   justify-content: center;
   align-items: center;
 }
+
+@media (min-width: 567px) {
+  .title-holder {
+    width: 30rem;
+    height: 6rem;
+  }
+
+  .task-input {
+    width: 30rem;
+    min-height: 6rem;
+  }
+}
