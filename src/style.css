@@ -36,7 +36,7 @@ body {
 }
 
 .title-holder {
-  width: 35rem;
+  width: 30rem;
   height: 5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
@@ -45,7 +45,7 @@ body {
 }
 
 .task-input {
-  width: 35rem;
+  width: 30rem;
   min-height: 5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
