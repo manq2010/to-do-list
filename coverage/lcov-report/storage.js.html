@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.18% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/22</span>
+                <span class='fraction'>18/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.05% </span>
+                <span class="strong">76.19% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/19</span>
+                <span class='fraction'>16/21</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -97,27 +97,31 @@
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -132,26 +136,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">class Storage {
-  static getTasks = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+  static getTasks = () =&gt; {
     let tasks;
-<span class="cstat-no" title="statement not covered" >    if (localStorage.getItem('tasks') === null) <span class="cstat-no" title="statement not covered" >tasks = [];</span></span>
-    else <span class="cstat-no" title="statement not covered" >tasks = JSON.parse(localStorage.getItem('tasks'));</span>
+    if (localStorage.getItem('tasks') === null) tasks = [];
+    else tasks = JSON.parse(localStorage.getItem('tasks'));
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return tasks;</span>
+    return tasks;
   };
 &nbsp;
-  static addTaskLocalStorage = <span class="fstat-no" title="function not covered" >(t</span>ask) =&gt; {
-    const tasks = <span class="cstat-no" title="statement not covered" >this.getTasks();</span>
-<span class="cstat-no" title="statement not covered" >    tasks.push(task);</span>
-<span class="cstat-no" title="statement not covered" >    localStorage.setItem('tasks', JSON.stringify(tasks));</span>
+  static addTaskLocalStorage = (task) =&gt; {
+    const tasks = this.getTasks();
+    tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    return tasks;
   };
 &nbsp;
-  static deleteTaskLocalStorage = <span class="fstat-no" title="function not covered" >(e</span>lement) =&gt; {
-    const tasks = <span class="cstat-no" title="statement not covered" >this.getTasks();</span>
-<span class="cstat-no" title="statement not covered" >    tasks.forEach(<span class="fstat-no" title="function not covered" >(t</span>ask, index) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (element === index) <span class="cstat-no" title="statement not covered" >tasks.splice(index, 1);</span></span>
+  static deleteTaskLocalStorage = (element) =&gt; {
+    const tasks = this.getTasks();
+    tasks.forEach((task, index) =&gt; {
+      if (element === index) tasks.splice(index, 1);
     });
-<span class="cstat-no" title="statement not covered" >    localStorage.setItem('tasks', JSON.stringify(tasks));</span>
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    return tasks;
   };
 &nbsp;
   static updateIndex = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
@@ -172,7 +178,7 @@ export default Storage;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-09T13:53:58.716Z
+                at 2022-11-09T22:41:40.073Z
             </div>
         <script src="prettify.js"></script>
         <script>

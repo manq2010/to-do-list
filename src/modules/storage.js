@@ -11,6 +11,7 @@ class Storage {
     const tasks = this.getTasks();
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    return tasks;
   };
 
   static deleteTaskLocalStorage = (element) => {
@@ -19,6 +20,7 @@ class Storage {
       if (element === index) tasks.splice(index, 1);
     });
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    return tasks;
   };
 
   static updateIndex = () => {

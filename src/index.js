@@ -65,3 +65,6 @@ window.document.addEventListener('DOMContentLoaded', () => {
     btnClear.addEventListener('click', Iteractive.clearAll);
   });
 });
+
+
+console.log('body', document.body)
