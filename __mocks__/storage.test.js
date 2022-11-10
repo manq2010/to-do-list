@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import Storage from '../src/modules/storage.js';
 
 describe('LocalStorage', () => {
@@ -30,19 +34,22 @@ describe('LocalStorage', () => {
   ];
 
   it('Add one new task to the to-do list', () => {
-    const task = Storage.addTaskLocalStorage(toToDoArray[0]);
-    expect(task).toEqual([toToDoArray[0]]);
+    Storage.addTaskLocalStorage(toToDoArray[0]);
+    const getTask = Storage.getTasks()[0];
+    expect(getTask).toEqual(toToDoArray[0]);
   });
 
   it('Add another new task to the to-do list', () => {
-    const task = Storage.addTaskLocalStorage(toToDoArray[1]);
-    expect(task).toEqual([toToDoArray[1]]);
+    Storage.addTaskLocalStorage(toToDoArray[1]);
+    const getTask = Storage.getTasks()[1];
+    expect(getTask).toEqual(toToDoArray[1]);
   });
 
   it('delete one task', () => {
-    const task = Storage.getTasks();
-    task.splice(0, 1);
-    expect(Storage.deleteTaskLocalStorage(0)).not.toEqual([toToDoArray[0]]);
+    Storage.addTaskLocalStorage(toToDoArray[2]);
+    Storage.deleteTaskLocalStorage(2);
+    const getTask = Storage.getTasks()[2];
+    expect(getTask).toBe(undefined);
   });
 
   it('delete another task', () => {
