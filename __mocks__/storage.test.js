@@ -3,6 +3,15 @@
  */
 
 import Storage from '../src/modules/storage.js';
+import UserInterface from '../src/modules/userinterface.js';
+import Interactive from '../src/modules/interactive.js';
+
+const clearAll = () => {
+  const tasks = Storage.getTasks();
+  const newTasks = tasks.filter((value) => !value.completed);
+  localStorage.setItem('tasks', JSON.stringify(newTasks));
+  return newTasks;
+};
 
 describe('LocalStorage', () => {
   const toToDoArray = [
@@ -14,7 +23,7 @@ describe('LocalStorage', () => {
     {
       index: 1,
       description: 'study',
-      completed: false,
+      completed: true,
     },
     {
       index: 2,
@@ -24,12 +33,12 @@ describe('LocalStorage', () => {
     {
       index: 3,
       description: 'sleep',
-      completed: false,
+      completed: true,
     },
     {
       index: 4,
       description: 'exercise',
-      completed: false,
+      completed: true,
     },
   ];
 
@@ -56,5 +65,41 @@ describe('LocalStorage', () => {
     const task = Storage.getTasks();
     task.splice(1, 1);
     expect(Storage.deleteTaskLocalStorage(1)).not.toEqual([toToDoArray[1]]);
+  });
+
+  it('edit the task on the locale storage', () => {
+    Storage.addTaskLocalStorage(toToDoArray[0]);
+    UserInterface.editTask(0, 'change - description');
+    const editTask = Storage.getTasks()[0];
+    expect(editTask.description).not.toEqual(toToDoArray[0].description);
+  });
+
+  it('edit another task on the locale storage', () => {
+    Storage.addTaskLocalStorage(toToDoArray[1]);
+    UserInterface.editTask(1, 'change - work');
+    const editTask = Storage.getTasks()[1];
+    expect(editTask.description).not.toEqual(toToDoArray[1].description);
+  });
+
+  it('clear all completed task', () => {
+    localStorage.clear();
+    toToDoArray.forEach((index) => {
+      Storage.addTaskLocalStorage(index);
+    });
+
+    Storage.getTasks();
+    clearAll();
+    expect(toToDoArray.length).not.toEqual(Storage.getTasks.length);
+  });
+
+  it('update completed status', () => {
+    localStorage.clear();
+    toToDoArray.forEach((index) => {
+      Storage.addTaskLocalStorage(index);
+    });
+
+    const taskToComplete = Storage.getTasks()[0];
+    const newStatus = Interactive.statusUpdate(0, true);
+    expect(taskToComplete.completed).not.toBe(newStatus[0].completed);
   });
 });
