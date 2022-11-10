@@ -39,10 +39,9 @@ describe('UserInterface', () => {
     expect(mainChildLength).toBe(2);
   });
 
-  it('Remove another task form list', () => {
-    const itemContainer = document.querySelector('.task-item');
-    UserInterface.deleteTask(itemContainer);
-    const mainChildLength = document.querySelector('main').children.length;
-    expect(mainChildLength).toBe(1);
+  it('Edit value on the User Interface', () => {
+    const textarea = document.querySelector('#edit-text');
+    textarea.innerHTML = 'change';
+    expect(textarea.value).toBe('change');
   });
 });

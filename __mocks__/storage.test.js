@@ -11,7 +11,7 @@ const clearAll = () => {
   const newTasks = tasks.filter((value) => !value.completed);
   localStorage.setItem('tasks', JSON.stringify(newTasks));
   return newTasks;
-}
+};
 
 describe('LocalStorage', () => {
   const toToDoArray = [
